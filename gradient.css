@@ -5,7 +5,7 @@
 }
 
 body {
-    background-color: #696969;
+    background-color: #000;
 }
 
 a {
@@ -25,9 +25,7 @@ a {
     background: linear-gradient(90deg, rgba(242,60,36,1) 0%, rgba(37,44,232,1) 20%, rgba(71,235,235,1) 40%, rgba(51,148,47,1) 60%, rgba(207,222,56,1) 80%, rgba(242,60,36,1) 100%);
     background-size: 400%;
     border-radius: 10rem;
-    filter: blur(20px);
-    opacity: 0;
-    transition: 0.5s;
+    z-index: 1;
 }
 
 a:hover{
@@ -44,3 +42,24 @@ a:hover{
     }
 }
 
+a::before{
+    background: linear-gradient(90deg, rgba(242,60,36,1) 0%, rgba(37,44,232,1) 20%, rgba(71,235,235,1) 40%, rgba(51,148,47,1) 60%, rgba(207,222,56,1) 80%, rgba(242,60,36,1) 100%);
+    position: absolute;
+    content: '';
+    top: -5px;
+    left: -5px;
+    right: -5px;
+    bottom: -5px;
+    z-index: -1;
+    background-size: 400%;
+    filter: blur(20px);
+    opacity: 0;
+    transition: 0.5s;
+    border-radius: 10rem;
+}
+
+a:hover::before{
+    filter: blur(20px);
+    opacity: 1;
+    animation: animate 8s linear infinite;
+}
